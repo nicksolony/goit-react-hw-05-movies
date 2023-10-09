@@ -1,16 +1,12 @@
+// import { lazy } from "react";
+// import { Route, Routes } from "react-router-dom";
+
+import { AppContainer } from "./App.styled";
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
+    <AppContainer>
       testing setup
-    </div>
+    </AppContainer>
   );
 };
