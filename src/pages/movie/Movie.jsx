@@ -1,8 +1,9 @@
-import { Container, MovieContainer, MovieInfo, Title, Paragraph, Overview, Genres, Image, Button, AdditionalInfo } from "./Movies.styled";
-import { Outlet, Link } from "react-router-dom";
-import suspen
+import { Container, MovieContainer, MovieInfo, Title, Paragraph, Overview, Genres, Image, Button, AdditionalInfo } from "./Movie.styled";
+import { Link, Outlet } from "react-router-dom";
+import { Suspense } from "react";
 
-const Movies = () => {
+
+const Movie = () => {
     return (
         <Container>
             <Button> Go Back </Button>
@@ -38,4 +39,4 @@ const Movies = () => {
     );
 };
 
-export default Movies;
+export default Movie;

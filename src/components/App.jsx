@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import SharedLayout from "./SharedLayout/SharedLayout";
 
 import Home from "pages/home/Home";
-import Movies from "pages/movies/Movies";
+import Movie from "pages/movie/Movie";
 
 
 export const App = () => {
@@ -11,7 +11,7 @@ export const App = () => {
       <Routes>
       <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
-          <Route path="movies" element={<Movies/>}>
+          <Route path="movie" element={<Movie/>}>
 
           </Route>
         </Route>
