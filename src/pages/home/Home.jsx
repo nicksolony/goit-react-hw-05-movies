@@ -1,24 +1,34 @@
 import { Container } from "./Home.styled";
+import { getTrendingMovies } from "services/moviedbApi";
+
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Home = () => {
+
+    const [movies, setMovies] = useState([]);
+
+    useEffect(() => {
+        getTrendingMovies()
+            .then(movies => setMovies(movies));
+        }
+        , []);
+    
+
     return (
         <Container>
             <h2>
                 Trending Today
             </h2>
             <ul>
-                <li>
-                    Movie 1
-                </li>
-                <li>
-                    movie 2
-                </li>
-                <li>
-                    Movie 3
-                </li>
-                <li>
-                    movie 4
-                </li>                
+                {
+                    movies.map(({ id, title }) =>
+                        <li>
+                            <Link to={`${id}`}>
+                                {title}
+                            </Link>
+                        </li>)
+}
             </ul>
 
         </Container>
