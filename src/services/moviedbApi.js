@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 let API_KEY = '5ec89972fbd16ce191e81c5a975c5c1a';
+// let ACCESS_TOKEN='eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1ZWM4OTk3MmZiZDE2Y2UxOTFlODFjNWE5NzVjNWMxYSIsInN1YiI6IjY1MjQ2NzMzYWI1ZTM0MDBhYmU1MzlkYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ZQbX6F4v3SbAKjJvYBMARMRhpWAGkzIQ5fDUxfxc-b0'
 let BASE_URL = 'https://api.themoviedb.org/3/';
 let METHOD: 'GEYT'
 // let IMAGE_TYPE = 'photo';
@@ -17,6 +18,22 @@ export const getTrendingMovies = () => {
       `${BASE_URL}trending/movie/day?api_key=${API_KEY}`,
     )
     .then(response => {return response.data.results});
+};
+
+export const getMovieDetails = ({ movieId }) => {
+    return axios
+        .get(
+            `${BASE_URL}movie/${movieId}?api_key=${API_KEY}`,
+    )
+    .then(response => {return response.data});
+};
+
+export const searchMovie = ({ movieId }) => {
+    return axios
+        .get(
+            `${BASE_URL}search/movie?query=${movieId}&api_key=${API_KEY}`,
+    )
+    .then(response => {return response.data});
 };
 
 

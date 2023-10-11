@@ -1,9 +1,20 @@
 import { Container, MovieContainer, MovieInfo, Title, Paragraph, Overview, Genres, Image, Button, AdditionalInfo } from "./Movie.styled";
-import { Link, Outlet } from "react-router-dom";
-import { Suspense } from "react";
+import { Link, Outlet, useParams } from "react-router-dom";
+import { useEffect, Suspense } from "react";
+import { getMovieDetails } from "services/moviedbApi";
+
 
 
 const Movie = () => {
+    
+    const { movieId } = useParams();
+
+    useEffect(() => {
+        getMovieDetails({ movieId })
+        .then(movie=>console.log(movie))
+    }, []);
+    
+    
     return (
         <Container>
             <Button> Go Back </Button>
