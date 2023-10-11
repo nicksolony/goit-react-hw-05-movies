@@ -1,8 +1,9 @@
-import { Container } from "./Home.styled";
-import { getTrendingMovies } from "services/moviedbApi";
-
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+
+import { Container, Header, MovieItem, MovieLink, MovieList } from "./Home.styled";
+
+import { getTrendingMovies } from "services/moviedbApi";
 
 const Home = () => {
 
@@ -17,19 +18,19 @@ const Home = () => {
 
     return (
         <Container>
-            <h2>
+            <Header>
                 Trending Today
-            </h2>
-            <ul>
+            </Header>
+            <MovieList>
                 {
                     movies.map(({ id, title }) =>
-                        <li>
-                            <Link to={`${id}`}>
+                        <MovieItem>
+                            <MovieLink to={`movies/${id}`}>
                                 {title}
-                            </Link>
-                        </li>)
+                            </MovieLink>
+                        </MovieItem>)
 }
-            </ul>
+            </MovieList>
 
         </Container>
     );
