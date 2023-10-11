@@ -10,7 +10,7 @@ const Movies = () => {
         <SearchBar/>
         <Suspense fallback={<div>loading...</div>}>
             <Outlet />
-            </Suspense>
+        </Suspense>
             </div>
     );
 

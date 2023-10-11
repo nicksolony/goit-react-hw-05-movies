@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
     display: flex;
@@ -53,3 +54,14 @@ export const AdditionalInfo = styled.div`
     font-size:18px;
     border-bottom: 1px solid #000000;    
 `
+
+export const BackLink = styled(Link)`
+    text-decoration: none;
+    color: #000000;
+    &:visited {
+        color:#000000;
+    };
+    &:active {
+        color:#000000;
+    };
+`;

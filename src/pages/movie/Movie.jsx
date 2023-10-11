@@ -1,12 +1,15 @@
-import { Container, MovieContainer, MovieInfo, Title, Paragraph, Overview, Genres, Image, Button, AdditionalInfo } from "./Movie.styled";
-import { Link, Outlet, useParams } from "react-router-dom";
-import { useState, useEffect, Suspense } from "react";
+import { Container, MovieContainer, MovieInfo, Title, Paragraph, Overview, Genres, Image, Button, AdditionalInfo, BackLink} from "./Movie.styled";
+import { Link, Outlet, useParams, useLocation } from "react-router-dom";
+import { useState, useEffect, Suspense, useRef } from "react";
 import { getMovieDetails } from "services/moviedbApi";
 
 
 
 const Movie = () => {
     
+    const location = useLocation();
+    const backLinkLocationRef = useRef(location.state?.from ?? '/movies');
+
     const { movieId } = useParams();
     const [movie, setMovie] = useState({});
 
@@ -18,13 +21,13 @@ const Movie = () => {
     
     const { title, vote_average = 0, overview, genres = [],poster_path} = movie;
     
-    const imgSrc = `https://image.tmdb.org/t/p/original/${poster_path}`
+    const imgSrc = `https://image.tmdb.org/t/p/original/${poster_path}`;
 
     const genresList = genres.map((genre) =>  genre.name).join(' ');
     
     return (
         <Container>
-            <Button> Go Back </Button>
+            <Button><BackLink to={backLinkLocationRef.current}>Go Back</BackLink></Button>
             <MovieContainer>   
                 {poster_path && <Image src={imgSrc} alt="Movie Poster" />}
                 <MovieInfo>

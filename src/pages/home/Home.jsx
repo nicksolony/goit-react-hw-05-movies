@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 
+import { useLocation } from "react-router";
+
 import { Container, Header, MovieItem, MovieLink, MovieList } from "./Home.styled";
 
 import { getTrendingMovies } from "services/moviedbApi";
@@ -7,6 +9,7 @@ import { getTrendingMovies } from "services/moviedbApi";
 const Home = () => {
 
     const [movies, setMovies] = useState([]);
+    const location = useLocation();
 
     useEffect(() => {
         getTrendingMovies()
@@ -24,7 +27,7 @@ const Home = () => {
                 {
                     movies.map(({ id, title }) =>
                         <MovieItem key={id}>
-                            <MovieLink to={`movies/${id}`}>
+                            <MovieLink to={`movies/${id}`} state={{ from: location }}>
                                 {title}
                             </MovieLink>
                         </MovieItem>)
