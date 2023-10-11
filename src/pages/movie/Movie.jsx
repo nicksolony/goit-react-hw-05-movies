@@ -13,9 +13,10 @@ const Movie = () => {
     useEffect(() => {
         getMovieDetails({ movieId })
         .then(movie=>setMovie(movie))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     
-    const { original_title, vote_average = 0, overview, genres = [],poster_path} = movie;
+    const { title, vote_average = 0, overview, genres = [],poster_path} = movie;
     
     const imgSrc = `https://image.tmdb.org/t/p/original/${poster_path}`
 
@@ -25,9 +26,9 @@ const Movie = () => {
         <Container>
             <Button> Go Back </Button>
             <MovieContainer>   
-                <Image src={imgSrc} alt="Movie Poster" />
+                {poster_path && <Image src={imgSrc} alt="Movie Poster" />}
                 <MovieInfo>
-                    <Title>{original_title}</Title>
+                    <Title>{title}</Title>
                     <Paragraph>User score: {vote_average.toFixed(1)*10}%</Paragraph>
                     <Overview>Overview</Overview>
                     <Paragraph>

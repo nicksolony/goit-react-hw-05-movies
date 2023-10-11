@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 
 import { Container, Header, MovieItem, MovieLink, MovieList } from "./Home.styled";
 
@@ -24,7 +23,7 @@ const Home = () => {
             <MovieList>
                 {
                     movies.map(({ id, title }) =>
-                        <MovieItem>
+                        <MovieItem key={id}>
                             <MovieLink to={`movies/${id}`}>
                                 {title}
                             </MovieLink>
