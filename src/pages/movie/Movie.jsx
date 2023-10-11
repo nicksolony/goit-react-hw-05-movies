@@ -1,6 +1,6 @@
 import { Container, MovieContainer, MovieInfo, Title, Paragraph, Overview, Genres, Image, Button, AdditionalInfo } from "./Movie.styled";
 import { Link, Outlet, useParams } from "react-router-dom";
-import { useEffect, Suspense } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { getMovieDetails } from "services/moviedbApi";
 
 
@@ -8,27 +8,33 @@ import { getMovieDetails } from "services/moviedbApi";
 const Movie = () => {
     
     const { movieId } = useParams();
+    const [movie, setMovie] = useState({});
 
     useEffect(() => {
         getMovieDetails({ movieId })
-        .then(movie=>console.log(movie))
+        .then(movie=>setMovie(movie))
     }, []);
     
+    const { original_title, vote_average = 0, overview, genres = [],poster_path} = movie;
+    
+    const imgSrc = `https://image.tmdb.org/t/p/original/${poster_path}`
+
+    const genresList = genres.map((genre) =>  genre.name).join(' ');
     
     return (
         <Container>
             <Button> Go Back </Button>
             <MovieContainer>   
-                <Image src="" alt="Movie Poster" />
+                <Image src={imgSrc} alt="Movie Poster" />
                 <MovieInfo>
-                    <Title>Movie Title</Title>
-                    <Paragraph>User score: 74%</Paragraph>
+                    <Title>{original_title}</Title>
+                    <Paragraph>User score: {vote_average.toFixed(1)*10}%</Paragraph>
                     <Overview>Overview</Overview>
                     <Paragraph>
-                        Lorem ipsum
+                        {overview}
                     </Paragraph>
                     <Genres>Genres</Genres>
-                    <Paragraph> Drama, war</Paragraph>
+                    <Paragraph> {genresList}</Paragraph>
                 </MovieInfo>
             </MovieContainer>
             <AdditionalInfo>

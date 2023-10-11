@@ -22,6 +22,7 @@ export const MovieInfo = styled.div`
 
 export const Image = styled.img`
     margin: 0px;
+    width: 250px;
 `;
 
 export const Title = styled.h4`
