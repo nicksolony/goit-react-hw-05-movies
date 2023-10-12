@@ -3,10 +3,6 @@ import axios from 'axios';
 let API_KEY = '5ec89972fbd16ce191e81c5a975c5c1a';
 // let ACCESS_TOKEN='eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1ZWM4OTk3MmZiZDE2Y2UxOTFlODFjNWE5NzVjNWMxYSIsInN1YiI6IjY1MjQ2NzMzYWI1ZTM0MDBhYmU1MzlkYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ZQbX6F4v3SbAKjJvYBMARMRhpWAGkzIQ5fDUxfxc-b0'
 let BASE_URL = 'https://api.themoviedb.org/3/';
-// let IMAGE_TYPE = 'photo';
-// let ORIENT = 'horizontal';
-// let SAFE_SEARCH = 'true';
-// let PER_PAGE = 12;
 
 
 export const getTrendingMovies = () => {
@@ -27,10 +23,10 @@ export const getMovieDetails = ({ movieId }) => {
     .then(response => {return response.data});
 };
 
-export const searchMovie = ({ movieId }) => {
+export const searchMovie = ({ query }) => {
     return axios
         .get(
-            `${BASE_URL}search/movie?query=${movieId}&api_key=${API_KEY}`,
+            `${BASE_URL}search/movie?query=${query}&api_key=${API_KEY}`,
     )
     .then(response => {return response.data});
 };

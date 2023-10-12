@@ -8,15 +8,3 @@ export const Container = styled.div`
 export const Header = styled.h2`
 `;
 
-export const MovieList = styled.ul`
-    font-size: 20px;
-`;
-
-export const MovieItem = styled.li`
-`;
-
-export const MovieLink = styled(Link)`
-    &:visited {
-        color:LinkText;
-    }
-`

@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 
 import { useLocation } from "react-router";
 
-import { Container, Header, MovieItem, MovieLink, MovieList } from "./Home.styled";
+import MovieList from "components/MovieList/MovieList";
+import { Container, Header, MovieItem, MovieLink } from "./Home.styled";
 
 import { getTrendingMovies } from "services/moviedbApi";
 
@@ -23,16 +24,7 @@ const Home = () => {
             <Header>
                 Trending Today
             </Header>
-            <MovieList>
-                {
-                    movies.map(({ id, title }) =>
-                        <MovieItem key={id}>
-                            <MovieLink to={`movies/${id}`} state={{ from: location }}>
-                                {title}
-                            </MovieLink>
-                        </MovieItem>)
-}
-            </MovieList>
+            <MovieList movies={movies} location={location} />
 
         </Container>
     );
