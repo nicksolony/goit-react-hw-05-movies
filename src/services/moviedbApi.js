@@ -43,4 +43,12 @@ export const getMovieCast = ({ movieId }) => {
     .then(response => {return response.data.cast});
 };
 
+export const getMovieReviews = ({ movieId }) => {
+    return axios
+        .get(
+            `${BASE_URL}movie/${movieId}/reviews?api_key=${API_KEY}`,
+    )
+    .then(response => {return response.data.results});
+};
+
 
