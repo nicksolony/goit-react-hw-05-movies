@@ -52,7 +52,8 @@ export const Button = styled.button`
 
 export const AdditionalInfo = styled.div`
     font-size:18px;
-    border-bottom: 1px solid #000000;    
+    border-bottom: 1px solid #000000;
+    margin-bottom: 15px; 
 `
 
 export const BackLink = styled(Link)`

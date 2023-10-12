@@ -7,7 +7,7 @@ export const Container = styled.div`
     flex-direction:column;
     justify-content: start;
     align-items: start;
-    font-size: 40px;
+    font-size: 18px;
     color: '#010101';
     margin-left:20px;
     margin-right: 20px;

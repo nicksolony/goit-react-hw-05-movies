@@ -29,7 +29,7 @@ const Movie = () => {
         <Container>
             <Button><BackLink to={backLinkLocationRef.current}>Go Back</BackLink></Button>
             <MovieContainer>   
-                {poster_path && <Image src={imgSrc} alt="Movie Poster" />}
+                {poster_path && <Image src={imgSrc} alt={title} />}
                 <MovieInfo>
                     <Title>{title}</Title>
                     <Paragraph>User score: {vote_average.toFixed(1)*10}%</Paragraph>

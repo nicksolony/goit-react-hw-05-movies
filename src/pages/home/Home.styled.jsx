@@ -5,7 +5,7 @@ export const Container = styled.div`
     padding-top: 20px;
 `;
 
-export const Header = styled.h3`
+export const Header = styled.h2`
 `;
 
 export const MovieList = styled.ul`

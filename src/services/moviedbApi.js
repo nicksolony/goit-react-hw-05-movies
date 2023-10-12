@@ -35,11 +35,12 @@ export const searchMovie = ({ movieId }) => {
     .then(response => {return response.data});
 };
 
+export const getMovieCast = ({ movieId }) => {
+    return axios
+        .get(
+            `${BASE_URL}movie/${movieId}/credits?api_key=${API_KEY}`,
+    )
+    .then(response => {return response.data.cast});
+};
 
-// export const getTrendingMovies = ({ searchQuery = '', currentPage = 1}) => {
-//   return axios
-//     .get(
-//       `${BASE_URL}?key=${API_KEY}&q=${searchQuery}&image_type=${IMAGE_TYPE}&orientation=${ORIENT}&safesearch=${SAFE_SEARCH}&per_page=${PER_PAGE}&page=${currentPage}`,
-//     )
-//     .then(response => {return response.data.hits});
-// };
+
