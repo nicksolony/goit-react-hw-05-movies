@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router";
 
 import MovieList from "components/MovieList/MovieList";
-import { Container, Header, MovieItem, MovieLink } from "./Home.styled";
+import { Container, Header } from "./Home.styled";
 
 import { getTrendingMovies } from "services/moviedbApi";
 

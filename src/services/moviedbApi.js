@@ -28,7 +28,7 @@ export const searchMovie = ({ query }) => {
         .get(
             `${BASE_URL}search/movie?query=${query}&api_key=${API_KEY}`,
     )
-    .then(response => {return response.data});
+    .then(response => {return response.data.results});
 };
 
 export const getMovieCast = ({ movieId }) => {

@@ -1,7 +1,8 @@
 import SearchBar  from "components/SearchBar/SearchBar";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useLocation } from "react-router-dom";
 import { searchMovie } from "services/moviedbApi";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
+import MovieList from "components/MovieList/MovieList";
 
 
 
@@ -9,19 +10,22 @@ import { useEffect } from "react";
 const Movies = () => {
 
     const [params] = useSearchParams();
+    const [movies, setMovies] = useState([]);
+    const location = useLocation();
     
     const query = params.get('query')
 
 useEffect(() => {
     if (query) {
      searchMovie({ query })
-    .then(movies=>console.log(movies))   
+    .then(movies=>setMovies(movies))   
     }
 }, [query]);
 
     return (
         <div>
-            <SearchBar/>
+            <SearchBar />
+            <MovieList movies={movies} location={location}/>
         </div>
     );
 
