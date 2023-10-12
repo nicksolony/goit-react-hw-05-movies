@@ -4,19 +4,23 @@ import { getMovieCast } from "services/moviedbApi";
 import { CastMember, Image, Info } from "./Cast.styled";
 
 
-const Cast = () => {
+export const Cast = () => {
 
     const [cast, setCast] = useState([]);
+    const [loading, setLoading] = useState(false);
     const { movieId } = useParams();
 
     useEffect(() => {
+        setLoading(true);
         getMovieCast({ movieId })
-        .then(cast=>setCast(cast))
+            .then(cast => {setCast(cast)})
+            .finally(()=>setLoading(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
         <div>
+            {loading && <p>Loading...</p>}
             {cast.length !== 0 && 
             <ul>
                 {cast.map((castMember) => {
@@ -35,4 +39,4 @@ const Cast = () => {
     );
 };
 
-export default Cast;
+    

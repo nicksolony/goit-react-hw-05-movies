@@ -5,8 +5,24 @@ import SharedLayout from "./SharedLayout/SharedLayout";
 const Home = lazy(()=>import('../pages/home/Home'));
 const Movies = lazy(() => import('../pages/movies/Movies'));
 const Movie = lazy(() => import('../pages/movie/Movie'));
-const Cast = lazy(()=> import('./Cast/Cast'));
-const Reviews = lazy(() => import('./Reviews/Reviews'));
+// const Cast = lazy(()=> import('./Cast/Cast'));
+// const Reviews = lazy(() => import('./Reviews/Reviews'));
+
+const Cast = lazy(() =>
+  import('./Cast/Cast').then(module => ({
+    ...module,
+    default: module.Cast,
+  }))
+);
+
+const Reviews = lazy(() =>
+  import('./Reviews/Reviews').then(module => ({
+    ...module,
+    default: module.Reviews,
+  }))
+);
+
+
 
 
 export const App = () => {
